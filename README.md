@@ -2,6 +2,8 @@
 
 Samples that run kryo in an OSGI environment.
 
+[![Build Status](https://travis-ci.org/magro/kryo-osgi-samples.png?branch=master)](https://travis-ci.org/magro/kryo-osgi-samples)
+
 ## Usage
 
 ```bash
