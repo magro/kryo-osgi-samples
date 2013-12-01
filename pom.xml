@@ -123,33 +123,4 @@
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <id>simple</id>
-            <build>
-                <defaultGoal>pax:provision</defaultGoal>
-                <plugins>
-                    <plugin>
-                        <groupId>org.ops4j</groupId>
-                        <artifactId>maven-pax-plugin</artifactId>
-                        <version>1.5</version>
-                        <configuration>
-                            <runner>1.8.5</runner>
-                            <framework>equinox</framework>
-                            <provision>
-                                <param>--log=debug</param>
-                                <param>--workingDirectory=target/runner</param>
-                                <param>--ee=J2SE-1.6</param>
-                                <param>mvn:org.eclipse.equinox/org.eclipse.equinox.common/3.6.0.v20100503</param>
-                                <param>mvn:org.eclipse.equinox/org.eclipse.equinox.preferences/3.3.0.v20100503</param>
-                                <param>mvn:com.esotericsoftware.kryo/kryo/2.23-SNAPSHOT</param>
-                                <param>mvn:io.ino.kryo.osgi-samples/io.ino.kryo.osgi-samples.simple/${project.version}</param>
-                            </provision>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
 </project>

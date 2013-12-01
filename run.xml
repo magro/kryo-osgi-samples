@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.ino.kryo.osgi-samples</groupId>
+    <artifactId>io.ino.kryo.osgi-samples.run</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Kryo OSGI Samples: Run Samples</name>
+    <description>Run Kryo OSGI Samples</description>
+    <url>https://github.com/magro/kryo-osgi-samples</url>
+
+    <developers>
+        <developer>
+            <name>Martin Grotzke</name>
+        </developer>
+    </developers>
+
+    <organization>
+        <name>inoio</name>
+        <url>http://ino.io</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.ops4j</groupId>
+                    <artifactId>maven-pax-plugin</artifactId>
+                    <version>1.4</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>com.springsource.repository.bundles.external</id>
+            <url>http://repository.springsource.com/maven/bundles/external</url>
+        </repository>
+    </repositories>
+
+    <profiles>
+        <profile>
+            <id>simple</id>
+            <build>
+                <defaultGoal>pax:provision</defaultGoal>
+                <plugins>
+                    <plugin>
+                        <groupId>org.ops4j</groupId>
+                        <artifactId>maven-pax-plugin</artifactId>
+                        <version>1.5</version>
+                        <configuration>
+                            <runner>1.8.5</runner>
+                            <framework>equinox</framework>
+                            <provision>
+                                <param>--log=debug</param>
+                                <param>--workingDirectory=target/runner</param>
+                                <param>--ee=J2SE-1.6</param>
+                                <param>mvn:org.eclipse.equinox/org.eclipse.equinox.common/3.6.0.v20100503</param>
+                                <param>mvn:org.eclipse.equinox/org.eclipse.equinox.preferences/3.3.0.v20100503</param>
+                                <param>mvn:com.esotericsoftware.kryo/kryo/2.23-SNAPSHOT</param>
+                                <param>mvn:io.ino.kryo.osgi-samples/io.ino.kryo.osgi-samples.simple/${project.version}</param>
+                            </provision>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>
