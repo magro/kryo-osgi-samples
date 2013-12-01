@@ -42,7 +42,7 @@
                     <instructions>
                         <Import-Package><![CDATA[
                                 org.osgi*,
-                                com.esotericsoftware.kryo*
+                                com.esotericsoftware*
                         ]]></Import-Package>
                         <Bundle-Activator>io.ino.kryo.osgisamples.simple.Activator</Bundle-Activator>
                         <Export-Package/>

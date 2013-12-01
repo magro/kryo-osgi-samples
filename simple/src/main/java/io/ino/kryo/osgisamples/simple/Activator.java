@@ -30,16 +30,16 @@ public class Activator implements BundleActivator {
 		kryo = new Kryo();
 
 		try {
-			testString();
-		} catch(RuntimeException e) {
+			roundTrip("foo");
+			roundTrip(new MyClass(42, "foo"));
+		} catch(Throwable e) {
 			e.printStackTrace();
 		}
     }
 
-	private void testString() {
-		String obj = "foo";
-		String deserialized = deserialize(serialize(obj), String.class);
-		System.out.println("Serializing String: " + (deserialized.equals(obj) ? "OK" : "Failed"));
+	private void roundTrip(Object obj) {
+		Object deserialized = deserialize(serialize(obj), obj.getClass());
+		System.out.println("Serializing "+ obj.getClass().getSimpleName() +": " + (deserialized.equals(obj) ? "OK" : "Failed"));
 	}
 
     public void stop(BundleContext context) throws Exception {
